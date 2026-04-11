@@ -7,6 +7,102 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main>
+        <header>
+            <div class="circle"></div>
+            <div class="pokeball">
+                <div class="pokeball-top"></div>
+                <div class="pokeball-bottom"></div>
+                <div class="pokeball-center"></div>
+            </div>
+        </header>
+        <div class="container-display">
+            <div class="display">
+                <!-- Busca -->
+                <div class="screen search active">
+                    <input type="text" placeholder="Buscar por nome ou ID..." />
+                </div>
+                <!-- Lista -->
+                <div class="screen list">
+                    <ul class="pokemon-list"></ul>
+                </div>
+                <!-- Detalhes -->
+                <div class="screen detail">
+                    <div class="bg"></div>
+                    <div class="info">
+                        <span class="id"></span>
+                        <h2 class="name"></h2>
+                        <img class="sprite" />
+                        <p class="description"></p>
+                        <div class="meta">
+                            <span class="type"></span>
+                            <span class="nature"></span>
+                        </div>
+                        <div class="evolutions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-buttons">
+				<!-- Botões Direcionais -->
+				<div class="container-directional">
+					<div class="line one">
+						<div class="void"></div>
+						<button id="up">
+							<img
+								class="up-icon"
+								src="src/assets/icons/button-icon.svg"
+								alt="Ícone Botão Cima"
+							/>
+						</button>
+						<div class="void"></div>
+					</div>
+					<div class="line two">
+						<button id="left">
+							<img
+								class="left-icon"
+								style="transform: rotate(-90deg)"
+								src="src/assets/icons/button-icon.svg"
+								alt="Ícone Botão Esquerdo"
+							/>
+						</button>
+						<button id="select">
+							<img
+								class="select-icon"
+								src="src/assets/icons/button-icon-select.svg"
+								alt="Ícone Botão Centro/Selecionar"
+							/>
+						</button>
+						<button id="right">
+							<img
+								class="right-icon"
+								style="transform: rotate(90deg)"
+								src="src/assets/icons/button-icon.svg"
+								alt="Ícone Botão Direito"
+							/>
+						</button>
+					</div>
+					<div class="line three">
+						<div class="void"></div>
+						<button id="down">
+							<img
+								class="down-icon"
+								style="transform: rotate(180deg)"
+								src="src/assets/icons/button-icon.svg"
+								alt="Ícone Botão Baixo"
+							/>
+						</button>
+						<div class="void"></div>
+					</div>
+				</div>
+				<!-- Botões de Seleção -->
+				<div class="container-selection">
+					<button id="previous"><</button>
+					<button id="action">X</button>
+					<button id="start">Z</button>
+					<button id="next">></button>
+				</div>
+			</div>
     <script src="script.js"></script>
 </body>
 </html>
