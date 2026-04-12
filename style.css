@@ -51,7 +51,6 @@ header .pokeball {
   width: 3rem;
   height: 3rem;
   position: relative;
-  border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
 }
@@ -74,3 +73,122 @@ header .pokeball {
     background-color: #636363;
     justify-content: space-around;
 }
+
+/* Display */
+
+.display {
+	width: 90%;
+	height: 90%;
+	background: #fff;
+	border: 6px solid #333;
+	border-radius: 1rem;
+	position: relative;
+	overflow: hidden;
+	font-family: monospace;
+}
+
+.screen {
+	position: absolute;
+	inset: 0;
+	padding: 10px;
+	display: none;
+}
+
+.screen.active {
+	display: block;
+}
+
+.search input {
+	width: 100%;
+	padding: 6px;
+	border: none;
+	background: #333;
+    color: #fff;
+	font-family: inherit;
+    border-radius: 1rem;
+	outline: none;
+}
+
+.pokemon-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.pokemon-list li {
+	padding: 4px;
+	cursor: pointer;
+}
+
+.pokemon-list li.active {
+	background: #333;
+	color: #fff;
+}
+
+.detail .bg {
+	position: absolute;
+	inset: 0;
+	opacity: 0.25;
+	transition: 0.3s;
+}
+
+/* fundo dinâmico por tipo */
+/* Depois resolvo*/
+[class*="type-"] .bg {
+	overflow-y: auto;
+}
+.type-grass .bg { background: #78c850; }
+.type-fire .bg { background: #f08030; }
+.type-water .bg { background: #6890f0; }
+.type-electric .bg { background: #f8d030; }
+.type-psychic .bg { background: #f85888; }
+.type-ice .bg { background: #98d8d8; }
+.type-dragon .bg { background: #7038f8; }
+.type-dark .bg { background: #705848; }
+.type-fairy .bg { background: #ee99ac; }
+.type-normal .bg { background: #a8a878; }
+
+.info {
+	position: relative;
+	z-index: 2;
+}
+
+.sprite {
+	width: 200px;
+	display: block;
+	margin: auto;
+}
+
+.meta {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+}
+
+.evolutions {
+    display: flex;
+	flex-direction: row;
+    gap: 4px;
+	overflow-x: auto;
+}
+
+.evolutions::-webkit-scrollbar {
+	display: none;
+}
+
+.evolutions span {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
+/* Display */
+
+/* Buttons */
+
+
+
+/* Buttons */
