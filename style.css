@@ -55,9 +55,15 @@ header .pokeball {
   cursor: pointer;
 }
 
+.pokeball img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .container-display {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;

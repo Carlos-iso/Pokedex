@@ -1,4 +1,5 @@
 // Screen core
+// Manipulação de telas e estado global da aplicação
 
 const state = {
 	mode: "search", // search | list | detail
@@ -21,7 +22,25 @@ function setScreen(name) {
 
 // Screen core
 
+// Utilitárias
+function toFilter(data, q) {
+	// Função Utilitária para filtrar os Pokémon com base na consulta do usuário
+
+    if (!data) return [];
+	return data.filter(
+		(p) =>
+			p.name.includes(q.toLowerCase()) ||
+			data.results.indexOf(p).toString() === q,
+	);
+}
+
+function upperFirst(str) {
+	return str[0].toUpperCase() + str.slice(1);
+}
+// Utilitárias
+
 // App
+// Lógica de navegação, busca e renderização de detalhes dos Pokémon
 
 async function searchPokemon(query) {
 	try {
@@ -47,19 +66,6 @@ async function searchPokemon(query) {
 		alert("An error occurred while searching. Please try again.");
 		return;
 	}
-}
-
-function toFilter(data, q) {
-	// Função Utilitária para filtrar os Pokémon com base na consulta do usuário
-	return data.filter(
-		(p) =>
-			p.name.includes(q.toLowerCase()) ||
-			data.results.indexOf(p).toString() === q,
-	);
-}
-
-function upperFirst(str) {
-	return str[0].toUpperCase() + str.slice(1);
 }
 
 async function nextPage() {
@@ -239,3 +245,56 @@ document.querySelector(".pokeball").onclick = () => {
 };
 
 // App
+
+// Navigation Buttons
+// Lógica extra de navegação por botões
+function move(direction) {
+	if (state.mode !== "list") return;
+
+	state.selectedIndex += direction;
+
+	if (state.selectedIndex < 0) state.selectedIndex = 0;
+	if (state.selectedIndex >= state.list.length)
+		state.selectedIndex = state.list.length - 1;
+	renderList();
+	scrollToSelected();
+}
+
+function scrollToSelected() {
+	const ul = document.querySelector(".pokemon-list");
+	const selected = ul.children[state.selectedIndex];
+	if (selected) {
+		selected.scrollIntoView({ behavior: "smooth", block: "center" });
+	}
+}
+
+document.getElementById("up").onclick = () => move(-1);
+document.getElementById("down").onclick = () => move(1);
+document.getElementById("select").onclick = () => {
+	if (state.mode === "list") {
+		selectPokemon(state.selectedIndex);
+	}
+};
+document.getElementById("action").onclick = () => {
+	console.log(state.mode);
+	if (state.mode == "detail") {
+		setScreen("list");
+	}
+};
+
+document.getElementById("start").onclick = () => {
+	searchPokemon(document.querySelector(".search input").value);
+	document.querySelector(".pokemon-list").scrollTop = 0;
+};
+document.getElementById("next").onclick = () => {
+	if (state.mode !== "list" || !state.nextUrl) return;
+	nextPage();
+	document.querySelector(".pokemon-list").scrollTop = document.querySelector(".pokemon-list").scrollHeight;
+}
+document.getElementById("previous").onclick = () => {
+	if (state.mode !== "list" || !state.previousUrl) return;
+	previousPage();
+	document.querySelector(".pokemon-list").scrollTop = 0;
+};
+
+// Navegatio Buttons
